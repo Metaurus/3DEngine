@@ -1,0 +1,13 @@
+23 October 2022
+This will be my attempt at creating a 3D engine in C++. These notes will document the entire learning process as well as all faults made during my work on this project.
+Why C++? It has the speed and low-level capabilities of C, but with the added benefit of being object-oriented, perfect for a game engine. C++ uses the GCC compiler just
+like C, but requires the additional flag of -lstdc++ (link standard C++) to compile properly.
+
+Goals for this project:
+-Use minimal amounts of C++ libraries, as building the engine from scratch will be more educational
+-Be able to successfully display 3D shapes on the screen and build complex objects from them
+    -Perhaps even be able to import 3D models
+-Be able to move the camera around, to look at the 3D shapes from different angles
+-Be able to develop a simplistic 3D game with this engine
+
+These goals as they stand might be simplistic and are subject to change as I learn more about C++ and engines in general.
