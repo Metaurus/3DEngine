@@ -13,4 +13,21 @@ Goals for this project:
 These goals as they stand might be simplistic and are subject to change as I learn more about C++ and engines in general.
 
 24 October 2022
-We will need access to the Windows operating system API which can be found in Windows.h.
+We will need access to the Windows operating system API which can be found in <Windows.h>. I followed a tutorial to use the Windows API to create a window where the engine
+can be run (https://www.youtube.com/watch?v=ssGka-bSTvQ). This video unfortunately wasn't very good at explaining what was happening but provided decent code for my purpose.
+In addition, C/C++ compiles in a very annoying manner as every .cpp file needs to be individually compiled, and there's no way I'm writing 500 files in the command line every time I
+want to compile the program. This requires the usage of a MAKE file, but that's a problem for next time (I'm starting to regret using C++, though it is a cool language).
+
+From Reddit, I also found this Github page (https://github.com/ssloy/tinyrenderer/wiki) that provides quite good explanations on basic 3D rendering without library usage. It will be a good
+basis for continuing this project.
+
+Coding notes:
+-Need 3 methods for a window
+    -init (creates and initializes)
+    -broadcast (updates)
+    -release (destroys and exits)
+
+TODO:
+-Delve deeper into Win32 API that was used in the creation of a window (understand what it means)
+-Create a MAKE file to be able to compile the program
+-Start going through the tinyrenderer tutorial
