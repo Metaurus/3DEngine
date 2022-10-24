@@ -11,3 +11,6 @@ Goals for this project:
 -Be able to develop a simplistic 3D game with this engine
 
 These goals as they stand might be simplistic and are subject to change as I learn more about C++ and engines in general.
+
+24 October 2022
+We will need access to the Windows operating system API which can be found in Windows.h.
