@@ -33,3 +33,23 @@ TODO:
 -Create a MAKE file to be able to compile the program
 -Start going through the tinyrenderer tutorial
 _________________________________________________________________________________________________________________________________________________________________________________________________
+
+31 October 2022
+I've decided that before I go into fully fledged 3D rendering, I should follow in the steps of history and learn graphical processing chronologically. This means that I should start 
+with creating a ray-casted engine similar to Doom or Wolfenstein 3D. For this example I will be following a "tinyrenderer" tutorial that can be found here https://github.com/ssloy/tinyraycaster/wiki/Part-0:-getting-started.
+
+
+Today I just created a program that creates a 2D map as a .ppm image and is able to fill that image with rectangles to act as walls for our level. In addition, I created player coordinates and 
+drew a corresponding square on the map to represent the player. So far I only have one .cpp file to compile, so there is no need for a MAKE file just yet.
+
+Coding notes:
+    -size_t is an interesting datatype. It takes the size of whatever variable is assigned to it and allocates the corresponding memory. It is useful for cross-platform compatability.
+    -A 2D array can be represented in 1D by changing [x][y] coordinates to [x + y * width]
+    -8-bit RGBA values can be packed into one 32-bit number in the reverse order (for some reason) -> ABGR
+    -A map for a raycasting level is represented with an array to mark where a wall should be placed
+    -ofstream (Output File Stream I'm guessing?) is used to generate a file and store it on the disk
+
+TODO:
+-Continue following the tinyrenderer tutorial
+-Read more about how vectors and other unfamiliar C++ datastructures work
+_________________________________________________________________________________________________________________________________________________________________________________________________
