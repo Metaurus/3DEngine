@@ -53,3 +53,18 @@ TODO:
 -Continue following the tinyrenderer tutorial
 -Read more about how vectors and other unfamiliar C++ datastructures work
 _________________________________________________________________________________________________________________________________________________________________________________________________
+
+1 November 2022
+I've finally learned how basic 3D raytracing works! This is the methodology that made Wolfenstein 3D and Doom possible. By using the angle from the X-axis (in radians), I am able to draw a ray by
+continuosly incrementing a constant to scale the coordinate adjustment until a wall is reached (based on the 2D map). Once a wall is reached, we draw a column who's height is the height of the window
+scaled by our ray constant. The more iterations the constant has to go through before it reaches a wall, the further the wall has to be, therefore the drawn column will be shorter. This is the magic
+of depth! So far the engine draws a frame, saves it to a .ppm image file and spams my code folder with a bunch of crap. Once the tutorial is finished, I will need render one frame at a time, and
+commit it to memory rather than the disk so that the frames are volatile. One is rendered, then it's gone. This will have to be incorporated in some kind of window that can be generously provided
+by the Win32 (or Win64?) api. 
+
+TODO:
+-Render the raycasting in a window and don't save every frame to the disk
+-Be able to move around
+-Figure out how I can texture the walls
+-Figure out how I can have multiple vertical levels (like Doom)
+_________________________________________________________________________________________________________________________________________________________________________________________________
