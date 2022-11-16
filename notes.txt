@@ -68,3 +68,11 @@ TODO:
 -Figure out how I can texture the walls
 -Figure out how I can have multiple vertical levels (like Doom)
 _________________________________________________________________________________________________________________________________________________________________________________________________
+
+5 November 2022
+I didn't accomplish too much today as I'm particularly tired on this rainy Saturday. By following the tutorial, I was able to fix the fisheye effect of the camera by adjusting the size of each
+column height by the cosine of the difference of the ray cone angle and the player face angle. This ensures every column within the player's viewport is treated as equidistant from the camera.
+In addition, I created a function to load textures from a file using a (rather big) header file as a library called "stb_image.h" taken from the tutorial. This allows for the mapping of the
+file values to a packed texture. My TODO points haven't changed from the last entry on November 1st. Hopefully I will be able to continue to consistently work on this project. One point that I
+would like to note is, assuming window creation for the game is done using OS API, how is this done across different operating systems, i.e. Windows vs Linux?
+_________________________________________________________________________________________________________________________________________________________________________________________________

@@ -8,6 +8,9 @@
 #include <sstream>
 #include <iomanip>
 
+#define STB_IMAGE_IMPLEMENTATION
+#include "stb_image.h" // this is a basic library to import images according to the tutorial
+
 // Takes 8-bit RGBA values, packs all the values into one 32 bit integer.
 // Alpha - most significant.
 // R - least significant 
@@ -49,6 +52,53 @@ void draw_rectangle(std::vector<uint32_t> &img, const size_t img_w, const size_t
             img[cx + cy * img_w] = color; // Set the corresponding image pixel to the color of the rectangle
         }
     }
+}
+
+
+// loads a texture based on a file of sequential textures
+bool load_texture(const std::string filename, std::vector<uint32_t> &texture, size_t &texture_size, size_t &texture_cnt) {
+    int nchannels = -1, w, h;
+    unsigned char *pixmap = stbi_load(filename.c_str(), &w, &h, &nchannels, 0); // loads the file into a pixelmap
+
+    // if there is an error loading the file, print an error message
+    if (!pixmap) {
+        std::cerr << "ERROR: cannot load the textures!" << std::endl;
+        return false;
+    }
+
+    // if the image is not 32 bits, print an error message and free the pixelmap
+    if (nchannels != 4) {
+        std::cerr << "ERROR: the texture must be a 32 bit image" << std::endl;
+        stbi_image_free(pixmap);
+        return false;
+    }
+
+    texture_cnt = w/h; // calculates how many textures are present in the file
+    texture_size = w/texture_cnt; // determines the size of the texture by dividing the width of the file by how many textures are present
+
+    // if the file does not have properly packed textures, print an error message and free the pixelmap
+    if (w != h*(int)texture_cnt) {
+        std::cerr << "ERROR: the texture file must contain N square textures packed horizontally" << std::endl;
+        stbi_image_free(pixmap);
+        return false;
+    } 
+
+    texture = std::vector<uint32_t>(w*h); // initialize our texture
+
+    // for every pixel in the file
+    for (int j = 0; j < h; j++) {
+        for (int i = 0; i < w; i++) {
+
+            // get the RGBA channels and pack them into the texture
+            uint8_t r = pixmap[(i+j*w)*4+0];
+            uint8_t g = pixmap[(i+j*w)*4+1];
+            uint8_t b = pixmap[(i+j*w)*4+2];
+            uint8_t a = pixmap[(i+j*w)*4+3];
+            texture[i+j*w] = pack_color(r, g, b, a);
+        }
+    }
+    stbi_image_free(pixmap); // don't forget to free our pixelmap!!!
+    return true;
 }
 
 int main() {
@@ -137,7 +187,10 @@ int main() {
                 if (map[(int)cx + (int)cy * map_w] != ' ') { // if we reach a wall, draw the vertical column to create a 3D illusion (magic!)
                     size_t icolor = map[(int)cx + (int)cy * map_w] - '0';
                     assert(icolor < ncolors);
-                    size_t column_height = win_h/t; // the column height will be smaller if t is bigger (i.e. further away)
+                    // the column height will be smaller if t is bigger (i.e. further away)
+                    // to fix the fisheye effect when looking at a wall, t is multiplied by the cosine of the difference between
+                    // the ray angle and the angle of where the player is facing
+                    size_t column_height = win_h/(t*cos(angle-player_a)); 
                     draw_rectangle(framebuffer, win_w, win_h, win_w/2+i, win_h/2-column_height/2, 1, column_height, colors[icolor]); // draw the column
                     break;
                 } 
