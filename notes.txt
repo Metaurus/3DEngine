@@ -76,3 +76,15 @@ In addition, I created a function to load textures from a file using a (rather b
 file values to a packed texture. My TODO points haven't changed from the last entry on November 1st. Hopefully I will be able to continue to consistently work on this project. One point that I
 would like to note is, assuming window creation for the game is done using OS API, how is this done across different operating systems, i.e. Windows vs Linux?
 _________________________________________________________________________________________________________________________________________________________________________________________________
+
+16 November 2022
+Jeez it's been a while. Time to get back to work.
+Today I spent time learning how to draw textures on the map blocks. This was done by taking the texture that was loaded in, iterating over the pixels of the desired column that the ray hit, and
+drawing those pixels to the framebuffer. The concept is quite simple but it requires considerable effort to code, especially in a low-level language like C++. The code speaks louder than
+anything I can write here, so go check it out for more description. I was able to successfully draw textures to my walls and this was visualized in a .ppm file as usual.
+
+TODO:
+-Be able to move around
+-Add entities to the world
+-Run in a playable window
+_________________________________________________________________________________________________________________________________________________________________________________________________
