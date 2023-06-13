@@ -6,3 +6,10 @@ I managed to follow the first introductory tutorial and made an image output of 
 Today I spent time looking through the header file and implementations of the "tgaimage" which is used in generating
 a simple line and outputting to a tga file. This was mostly to brush up on C++ again. I also set up my Personal Access
 Token for my Github repository.
+
+13 June 2023
+1. Bresenham's Line Drawing Algorithm
+2. gprof
+3. Floating point division optimization
+4. Don't perform branches inside loops (crazy performance difference!)
+    4.1 Most compilers nowadays are smart enough to do what is called "loop unhoisting"
