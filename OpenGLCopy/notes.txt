@@ -9,7 +9,24 @@ Token for my Github repository.
 
 13 June 2023
 1. Bresenham's Line Drawing Algorithm
-2. gprof
-3. Floating point division optimization
+    1.1 Xiaolin Wu's line algorithm -> fast antialiasing
+2. gprof -> benchmark C/C++ function calls
+3. Floating point division optimization -> always try to do integer addition/multiplication, way faster!
 4. Don't perform branches inside loops (crazy performance difference!)
     4.1 Most compilers nowadays are smart enough to do what is called "loop unhoisting"
+
+14 June 2023
+1. When an "->" is used to access an object's variables/methods, this is when we are
+using a pointer for the object. It is shorthand for "de-reference the pointer and access its values".
+2. Wavefront obj format: vertices and faces of a model
+
+19 June 2023
+1. Rasterizing triangles: find the bounds, iterate through the points, if it lies within the bounds,
+render the pixel.
+    1.1 Filling a triangle is much more complicated than drawing the bounds of a triangle
+2. Barycentric coordinates: describe points within a triangle
+    2.1 Any point within the triangle is represented by three weights (u, v, w) which satisfy the following:
+        1.) The weights are non-negative
+        2.) The weights sum up to 1
+    2.2 They indicate how much of the triangle's area is covered by each vertex
+    2.3 In summary: they provide a convenient mathematical framework for representing points within triangles
