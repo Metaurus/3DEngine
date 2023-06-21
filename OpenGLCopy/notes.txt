@@ -30,3 +30,11 @@ render the pixel.
         2.) The weights sum up to 1
     2.2 They indicate how much of the triangle's area is covered by each vertex
     2.3 In summary: they provide a convenient mathematical framework for representing points within triangles
+
+21 June 2023
+1. You can overload operators in C++. This means you define exactly how an operator is used with objects.
+    1.1 In our example, the Vec3f defines the ^ operator to perform the following arithmetic: y*v.z-z*v.y, z*v.x-x*v.z, x*v.y-y*v.x (cross product)
+2. Basic lighting can be calculated by defining a light vector, finding the normal of every triangle (and normalizing it), and
+taking the scalar (dot) product of the light vector with the triangle's normal. This is the intensity level which we can scale our triangles' colors by.
+In short, if the light is perpendicular to the triangle, it is at maximum intensity. If they are parallel, the intensity is 0.
+TODO: figure out why all the triangles aren't being rendered.
